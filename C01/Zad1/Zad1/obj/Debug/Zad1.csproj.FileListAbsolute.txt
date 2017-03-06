@@ -1,0 +1,12 @@
+D:\projects\ZPrOb\Zad1\Zad1\bin\Debug\Zad1.exe.config
+D:\projects\ZPrOb\Zad1\Zad1\bin\Debug\Zad1.exe
+D:\projects\ZPrOb\Zad1\Zad1\bin\Debug\Zad1.pdb
+D:\projects\ZPrOb\Zad1\Zad1\obj\Debug\Zad1.csprojResolveAssemblyReference.cache
+D:\projects\ZPrOb\Zad1\Zad1\obj\Debug\Zad1.exe
+D:\projects\ZPrOb\Zad1\Zad1\obj\Debug\Zad1.pdb
+D:\projects\ZPrOb\C01\Zad1\Zad1\bin\Debug\Zad1.exe.config
+D:\projects\ZPrOb\C01\Zad1\Zad1\obj\Debug\Zad1.exe
+D:\projects\ZPrOb\C01\Zad1\Zad1\obj\Debug\Zad1.pdb
+D:\projects\ZPrOb\C01\Zad1\Zad1\bin\Debug\Zad1.exe
+D:\projects\ZPrOb\C01\Zad1\Zad1\bin\Debug\Zad1.pdb
+D:\projects\ZPrOb\C01\Zad1\Zad1\obj\Debug\Zad1.csprojResolveAssemblyReference.cache
