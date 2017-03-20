@@ -1,0 +1,8 @@
+D:\projects\ZPrOb\C03\zad1\zad1\bin\Debug\zad1.exe.config
+D:\projects\ZPrOb\C03\zad1\zad1\bin\Debug\zad1.exe
+D:\projects\ZPrOb\C03\zad1\zad1\bin\Debug\zad1.pdb
+D:\projects\ZPrOb\C03\zad1\zad1\obj\Debug\zad1.csprojResolveAssemblyReference.cache
+D:\projects\ZPrOb\C03\zad1\zad1\obj\Debug\zad1.exe
+D:\projects\ZPrOb\C03\zad1\zad1\obj\Debug\zad1.pdb
+D:\projects\ZPrOb\C03\zad1\zad1\bin\Debug\nunit.framework.dll
+D:\projects\ZPrOb\C03\zad1\zad1\bin\Debug\nunit.framework.xml

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Mark" Relationship="Self.FK_Mark_0_0" FromRole="Course" ToRole="Mark" />
+    <NavigationProperty Name="Presence" Relationship="Self.FK_Presence_0_0" FromRole="Course" ToRole="Presence" />
+  </EntityType>
+  <EntityType Name="Mark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="Double" Nullable="false" />
+    <Property Name="IdStudent" Type="Int64" Nullable="false" />
+    <Property Name="IdCourse" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Mark_0_0" FromRole="Mark" ToRole="Course" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Mark_1_0" FromRole="Mark" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Presence">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="Boolean" Nullable="false" />
+    <Property Name="IdStudent" Type="Int64" Nullable="false" />
+    <Property Name="IdCourse" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Presence_0_0" FromRole="Presence" ToRole="Course" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Presence_1_0" FromRole="Presence" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Mark" Relationship="Self.FK_Mark_1_0" FromRole="Student" ToRole="Mark" />
+    <NavigationProperty Name="Presence" Relationship="Self.FK_Presence_1_0" FromRole="Student" ToRole="Presence" />
+  </EntityType>
+  <Association Name="FK_Mark_0_0">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Mark" Type="Self.Mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mark">
+        <PropertyRef Name="IdCourse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Presence_0_0">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Presence" Type="Self.Presence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Presence">
+        <PropertyRef Name="IdCourse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mark_1_0">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Mark" Type="Self.Mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mark">
+        <PropertyRef Name="IdStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Presence_1_0">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Presence" Type="Self.Presence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Presence">
+        <PropertyRef Name="IdStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Course" EntityType="Self.Course" />
+    <EntitySet Name="Mark" EntityType="Self.Mark" />
+    <EntitySet Name="Presence" EntityType="Self.Presence" />
+    <EntitySet Name="Student" EntityType="Self.Student" />
+    <AssociationSet Name="FK_Mark_0_0" Association="Self.FK_Mark_0_0">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Mark" EntitySet="Mark" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Presence_0_0" Association="Self.FK_Presence_0_0">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Presence" EntitySet="Presence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mark_1_0" Association="Self.FK_Mark_1_0">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Mark" EntitySet="Mark" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Presence_1_0" Association="Self.FK_Presence_1_0">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Presence" EntitySet="Presence" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

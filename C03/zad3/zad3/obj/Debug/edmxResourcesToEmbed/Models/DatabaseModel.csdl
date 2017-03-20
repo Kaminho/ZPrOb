@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="mark">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="value" Type="Double" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" />
+    <Property Name="id_student" Type="Int64" Nullable="false" />
+    <Property Name="id_school_subject" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="school_subject" Relationship="Self.FK_mark_0_0" FromRole="mark" ToRole="school_subject" />
+    <NavigationProperty Name="student" Relationship="Self.FK_mark_1_0" FromRole="mark" ToRole="student" />
+  </EntityType>
+  <EntityType Name="school_subject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_of_school_subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="mark" Relationship="Self.FK_mark_0_0" FromRole="school_subject" ToRole="mark" />
+    <NavigationProperty Name="student" Relationship="Self.FK_student_0_0" FromRole="school_subject" ToRole="student" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_mark" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="mark" Relationship="Self.FK_mark_1_0" FromRole="student" ToRole="mark" />
+    <NavigationProperty Name="school_subject" Relationship="Self.FK_student_0_0" FromRole="student" ToRole="school_subject" />
+  </EntityType>
+  <Association Name="FK_mark_0_0">
+    <End Role="school_subject" Type="Self.school_subject" Multiplicity="1" />
+    <End Role="mark" Type="Self.mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="school_subject">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mark">
+        <PropertyRef Name="id_school_subject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mark_1_0">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="mark" Type="Self.mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mark">
+        <PropertyRef Name="id_student" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_student_0_0">
+    <End Role="school_subject" Type="Self.school_subject" Multiplicity="1" />
+    <End Role="student" Type="Self.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="school_subject">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="id_mark" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="mark" EntityType="Self.mark" />
+    <EntitySet Name="school_subject" EntityType="Self.school_subject" />
+    <EntitySet Name="student" EntityType="Self.student" />
+    <AssociationSet Name="FK_mark_0_0" Association="Self.FK_mark_0_0">
+      <End Role="school_subject" EntitySet="school_subject" />
+      <End Role="mark" EntitySet="mark" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mark_1_0" Association="Self.FK_mark_1_0">
+      <End Role="student" EntitySet="student" />
+      <End Role="mark" EntitySet="mark" />
+    </AssociationSet>
+    <AssociationSet Name="FK_student_0_0" Association="Self.FK_student_0_0">
+      <End Role="school_subject" EntitySet="school_subject" />
+      <End Role="student" EntitySet="student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,22 @@
+﻿<Page x:Class="zad3.Views.AddMarkMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:zad3.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="280" d:DesignWidth="525"
+      Title="AddMarkMenu">
+
+    <Grid Name="gAddMark" Background="White">
+
+        <Label x:Name="lbStudent" Content="Student:" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbStudent" HorizontalAlignment="Left" Margin="140,13,0,0" VerticalAlignment="Top" Width="210" ItemsSource="{Binding Students}"/>
+        <Label x:Name="lbCourse" Content="Zajęcia:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbCourse" HorizontalAlignment="Left" Margin="140,50,0,0" VerticalAlignment="Top" Width="210" ItemsSource="{Binding Courses}"/>
+        <Label x:Name="lbValue" Content="Ocena:" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbValue" HorizontalAlignment="Left" Margin="140,91,0,0" VerticalAlignment="Top" Width="210" ItemsSource="{Binding Values}"/>
+
+        <Button x:Name="btn" Content="Dodaj" HorizontalAlignment="Left" Margin="257,158,0,0" VerticalAlignment="Top" Width="120" Height="35" Click="btn_Click"/>
+    </Grid>
+</Page>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\projects\ZPrOb\C03\zad3\zad3\database.s3db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="mark">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="value" Type="real" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="id_student" Type="integer" Nullable="false" />
+    <Property Name="id_school_subject" Type="integer" Nullable="false" />
+  </EntityType>
+  <EntityType Name="school_subject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_of_school_subject" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_mark" Type="integer" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_mark_0_0">
+    <End Role="school_subject" Type="Self.school_subject" Multiplicity="1" />
+    <End Role="mark" Type="Self.mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="school_subject">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mark">
+        <PropertyRef Name="id_school_subject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mark_1_0">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="mark" Type="Self.mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="mark">
+        <PropertyRef Name="id_student" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_student_0_0">
+    <End Role="school_subject" Type="Self.school_subject" Multiplicity="1" />
+    <End Role="student" Type="Self.student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="school_subject">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="id_mark" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="mark" EntityType="Self.mark" store:Type="Tables" />
+    <EntitySet Name="school_subject" EntityType="Self.school_subject" store:Type="Tables" />
+    <EntitySet Name="student" EntityType="Self.student" store:Type="Tables" />
+    <AssociationSet Name="FK_mark_0_0" Association="Self.FK_mark_0_0">
+      <End Role="school_subject" EntitySet="school_subject" />
+      <End Role="mark" EntitySet="mark" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mark_1_0" Association="Self.FK_mark_1_0">
+      <End Role="student" EntitySet="student" />
+      <End Role="mark" EntitySet="mark" />
+    </AssociationSet>
+    <AssociationSet Name="FK_student_0_0" Association="Self.FK_student_0_0">
+      <End Role="school_subject" EntitySet="school_subject" />
+      <End Role="student" EntitySet="student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

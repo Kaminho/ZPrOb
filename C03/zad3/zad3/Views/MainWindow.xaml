@@ -1,0 +1,27 @@
+﻿<Window x:Class="zad3.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:zad3.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="525">
+    <Grid>
+        <Menu Height="20" VerticalAlignment="Top">
+            <MenuItem Header="Dziennik">
+                <MenuItem Header="Dodaj">
+                    <MenuItem Header="Ucznia" Click="AddStudentView_Click" />
+                    <MenuItem Header="Zajęcia" Click="AddCourseView_Click"/>
+                    <MenuItem Header="Obecność" Click="AddPresenceView_Click"/>
+                    <MenuItem Header="Ocenę" Click="AddMarkView_Click"/>
+                </MenuItem>
+                <MenuItem Header="Pokaż">
+                    <MenuItem Header="Uczniów" Click="ShowStudentsView_Click" />
+                    <MenuItem Header="Zajęcia" Click="ShowCoursesView_Click"/>
+                    <MenuItem Header="Obecność" Click="ShowPresencesView_Click"/>
+                    <MenuItem Header="Oceny" Click="ShowMarksView_Click"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>
