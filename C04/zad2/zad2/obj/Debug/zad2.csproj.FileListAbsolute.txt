@@ -1,0 +1,6 @@
+D:\projects\ZPrOb\C04\zad2\zad2\bin\Debug\zad2.exe.config
+D:\projects\ZPrOb\C04\zad2\zad2\bin\Debug\zad2.exe
+D:\projects\ZPrOb\C04\zad2\zad2\bin\Debug\zad2.pdb
+D:\projects\ZPrOb\C04\zad2\zad2\obj\Debug\zad2.csprojResolveAssemblyReference.cache
+D:\projects\ZPrOb\C04\zad2\zad2\obj\Debug\zad2.exe
+D:\projects\ZPrOb\C04\zad2\zad2\obj\Debug\zad2.pdb
