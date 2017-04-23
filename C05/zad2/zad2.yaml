@@ -1,0 +1,103 @@
+swagger: '2.0'
+info:
+  version: 1.0.1
+  title: Student Management Application
+  description: |
+    **The application is used to manage students**
+
+    The application is used to manage students
+basePath: /students
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - text/xml
+produces:
+  - application/json
+  - text/html
+paths:
+  /students/:
+    get:
+      parameters:
+        - name: limit
+          in: query
+          description: number of students to return
+          type: integer
+          default: 10
+          minimum: 10
+          maximum: 100
+      responses:
+        '200':
+          description: List all students
+          schema:
+            title: Students
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+    post:
+      parameters:
+        - name: student
+          in: body
+          description: The student JSON you want to post
+          schema:
+            $ref: '#/definitions/Student'
+          required: true
+      responses:
+        '200':
+          description: Make a new student
+  '/students/{id}':
+    get:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: id of the student
+          required: true
+      responses:
+        '200':
+          description: Sends the student with given id
+    post:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: id of the student to updates
+          required: true
+        - name: student
+          in: body
+          description: The student JSON you want to post
+          schema:
+            $ref: '#/definitions/Student'
+          required: true
+      responses:
+        '200':
+          description: Updates the student
+    delete:
+      parameters:
+        - name: id
+          in: path
+          type: string
+          description: id of the student
+          required: true
+      responses:
+        '200':
+          description: Remove the student with given id
+definitions:
+  Student:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      surname:
+        type: string
+      pesel:
+        type: string
+      address:
+        type: string
+      email:
+        type: string
+      grade:
+        type: string
